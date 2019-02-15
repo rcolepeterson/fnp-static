@@ -22,7 +22,7 @@ const getCMSData = () => {
 
 exports.createPages = ({ actions: { createPage } }) => {
   return Promise.all([getCMSData()]).then(requestData => {
-    const data = [...requestData[0], ...requestData[1]]
+    const data = requestData[0];
 
     createPage({
       path: `/articles/`,
