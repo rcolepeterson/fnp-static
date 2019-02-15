@@ -83,7 +83,6 @@ class Tile extends Component {
           {this.props.article.article_image_url && (
             <TileImage
               imageURL={this.props.article.article_image_url}
-              imageHeight={this.getScaledHeight()}
             />
           )}
 

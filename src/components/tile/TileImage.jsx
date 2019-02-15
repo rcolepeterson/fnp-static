@@ -132,31 +132,32 @@ class TileImage extends Component {
   render() {
     return (
       <Wrapper
-        height={
-          this.state.error || this.state.loading
-            ? `${this.props.imageHeight}`
-            : 'auto'
-        }>
-        {this.state.loading && (
-          <LoadingCircleWrapper>
-            <LoadingCircle />
-          </LoadingCircleWrapper>
-        )}
-        {this.state.error ? (
-          <ImageError />
-        ) : (
-            this.state.image.length && (
-              <ImageContainer>
-                <ImageInTile
-                  onError={this.onImageError}
-                  onLoad={this.onImageLoad}
-                  opacity={this.state.imageOpacity}
-                  src={`${baseURL}${this.props.imageURL}`}
-                />
-              </ImageContainer>
+        height={'auto'}
+      >
+        {
+          this.state.loading && (
+            <LoadingCircleWrapper>
+              <LoadingCircle />
+            </LoadingCircleWrapper>
+          )
+        }
+        {
+          this.state.error ? (
+            <ImageError />
+          ) : (
+              this.state.image.length && (
+                <ImageContainer>
+                  <ImageInTile
+                    onError={this.onImageError}
+                    onLoad={this.onImageLoad}
+                    opacity={this.state.imageOpacity}
+                    src={`${baseURL}${this.props.imageURL}`}
+                  />
+                </ImageContainer>
+              )
             )
-          )}
-      </Wrapper>
+        }
+      </Wrapper >
     );
   }
 }

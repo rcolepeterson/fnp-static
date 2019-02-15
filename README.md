@@ -1,3 +1,9 @@
+
+# FNP Static
+https://app.netlify.com/sites/hopeful-hugle-977d3a/overview
+
+repo in github/rcolepeterson deployed by netifly.
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
