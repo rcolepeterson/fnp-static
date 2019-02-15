@@ -33,7 +33,6 @@ class TileChannelBar extends Component {
       <Wrapper className="front_page_channel">
         <Source
           className={this.props.article.article_extras.source}
-          style={{ backgroundImage: `url(${this.props.article.icon})` }}
         />
         <SourceInfo>
           <span>{this.topInfo}</span>

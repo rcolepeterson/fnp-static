@@ -6,7 +6,7 @@ import Tile from '../components/tile/Tile'
 
 export default ({ pageContext: { allArticles } }) => {
   // console.log('article_clean_title', allArticles);
-  const baseURL = 'https://cdn-prototype.microsites.partnersite.mobi'
+  // const baseURL = 'https://cdn-prototype.microsites.partnersite.mobi'
   return (
     <Layout>
       <SiteMetadata pathname={`articles`} />
