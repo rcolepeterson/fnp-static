@@ -34,7 +34,7 @@ export default ({ pageContext: { article } }) => {
     return { __html: article.article_content }
   }
   // console.log('article', article);
-  const baseURL = 'http://prototype.microsites.partnersite.mobi'
+  const baseURL = 'https://cdn-prototype.microsites.partnersite.mobi';
   return (
     <Layout>
       <SiteMetadata pathname={`articles/${article.article_clean_title}`} />
