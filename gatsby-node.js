@@ -10,18 +10,18 @@ const getCMSData = () => {
     })
 }
 
-const getTwitterData = () => {
-  const URL =
-    'http://prototype.microsites.partnersite.mobi/bofaml/mz/1542233103/bankofamericamerrilllynch/twitter.json'
-  return fetch(URL)
-    .then(resp => resp.json())
-    .catch(function (error) {
-      console.log('error')
-    })
-}
+// const getTwitterData = () => {
+//   const URL =
+//     'https://prototype.microsites.partnersite.mobi/bofaml/mz/1542233103/bankofamericamerrilllynch/twitter.json'
+//   return fetch(URL)
+//     .then(resp => resp.json())
+//     .catch(function (error) {
+//       console.log('error')
+//     })
+// }
 
 exports.createPages = ({ actions: { createPage } }) => {
-  return Promise.all([getCMSData(), getTwitterData()]).then(requestData => {
+  return Promise.all([getCMSData()]).then(requestData => {
     const data = [...requestData[0], ...requestData[1]]
 
     createPage({
