@@ -5,18 +5,24 @@ import React from "react"
 const Header = ({ siteTitle }) => (
   <header
     style={{
-      background: `#193442`,
-      marginBottom: `1.45rem`,
+      position: 'fixed',
+      width: "100%",
+      backgroundColor: '#193442',
+      height: 42,
+      top: 0,
+      boxSizing: 'border-box',
+      borderBottom: '3px solid #393939',
+      zIndex: 3
     }}
   >
     <div
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        marginLeft: 10,
+        marginTop: 10,
+        maxWidth: 960
       }}
     >
-      <h3 style={{ margin: 0 }}>
+      <h4 style={{ margin: 0 }}>
         <Link
           to="/"
           style={{
@@ -26,9 +32,9 @@ const Header = ({ siteTitle }) => (
         >
           {siteTitle}
         </Link>
-      </h3>
+      </h4>
     </div>
-  </header>
+  </header >
 )
 
 Header.propTypes = {
