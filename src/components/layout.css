@@ -241,7 +241,8 @@ html {
 
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
+  /* font-family: georgia,
+serif; */
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -249,7 +250,9 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
-  background: #E5E5E5;
+  background: #e5e5e5;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
 }
 
 img {

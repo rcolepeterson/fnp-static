@@ -7,6 +7,7 @@ module.exports = {
     author: `@zumobi`
   },
   plugins: [
+    'gatsby-plugin-resolve-src',
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-filesystem`,

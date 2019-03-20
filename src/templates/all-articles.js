@@ -1,48 +1,47 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import Layout from '../components/layout'
-import SiteMetadata from '../components/site-metadata'
-import Tile from '../components/tile/Tile'
-import HeroImage from '../components/heroImage';
-import CallToAction from '../components/buttons/CtaButton';
+import React from "react";
+import Layout from "../components/layout";
+import SiteMetadata from "../components/site-metadata";
+import HeroImage from "../components/heroImage";
+import FrontPage from "microzine-3.2/views/FrontPageViews/FrontPage";
+import Article from "microzine-3.2/models/Article";
+import EndMsg from "microzine-3.2/views/partials/EndMsg";
+import Footer from "microzine-3.2/views/partials/Footer";
+import ScrollIndicator from "microzine-3.2/views/ScrollIndicator";
+import CallToAction from "microzine-3.2/views/partials/buttons/CtaButton";
+import MicrozineEvents from "microzine-3.2/helpers/MicrozineEvents";
+import Properties from "microzine-3.2/helpers/MicrozineProperties";
+import ShareModule from "microzine-3.2/views/ShareModule";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  position: relative;
+  background-color: #e5e5e5;
+  top: 210px;
+  overflow: inherit;
+  z-index: 2;
+  width: 100%;
+  @media (min-width: 768px) {
+    top: 290px;
+  }
+`;
 
 export default ({ pageContext: { allArticles } }) => {
+  MicrozineEvents.dispatchEvent("microzineready");
+  var articles = allArticles.map(a => new Article(a));
+  Properties.articles = articles;
   return (
     <Layout>
       <SiteMetadata pathname={`articles`} />
       <HeroImage />
 
-      <div style={{
-        position: 'relative',
-        top: 210,
-        overflow: 'inherit',
-        zIndex: 2,
-        width: '100%'
-
-      }}>
+      <Wrapper>
         <CallToAction />
-        <ul style={{ backgroundColor: '#E5E5E5', padding: 0, margin: 0 }}>
-          {allArticles.map((article, i) => (
-            <li
-              key={article.article_digest}
-              style={{
-                padding: '1px',
-                textAlign: 'center',
-                listStyle: 'none',
-                width: '50%',
-                verticalAlign: 'top',
-                display: 'inline-block',
-                margin: 0
-              }}
-            >
-              <Tile key={i} article={article} />
-            </li>
-          ))}
-        </ul>
-        <Link to={`/`}>
-          <p>Home</p>
-        </Link>
-      </div>
+        <FrontPage articles={articles} />
+        <EndMsg />
+        <Footer />
+        <ScrollIndicator />
+        <ShareModule />
+      </Wrapper>
     </Layout>
-  )
-}
+  );
+};
