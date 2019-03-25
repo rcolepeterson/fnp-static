@@ -1,9 +1,9 @@
 import React, { Component } from "react"; //eslint-disable-line no-unused-vars
-import Router from "microzine-3.2/api/Router";
+//import Router from "microzine-3.2/api/Router";
 import MicrozineEvents from "microzine-3.2/helpers/MicrozineEvents";
 import Properties from "microzine-3.2/helpers/MicrozineProperties";
 import Page from "microzine-3.2/api/Page";
-import Logger from "microzine-3.2/helpers/Logger";
+//import Logger from "microzine-3.2/helpers/Logger";
 import { colors, animation } from "microzine-3.2/styles/designSystem";
 import styled from "styled-components";
 
@@ -131,12 +131,12 @@ class ShareModule extends Component {
 
     this.state = {
       expanded: false,
-      isVisible: false,
+      isVisible: true,
       shareStyle: {
         backgroundImage: `url(${Properties.assetPath}/share.svg)`
       }
     };
-
+    //this.microzineReady = this.microzineReady.bind(this);
     Page.addEventListener("resize", this.handleResize.bind(this));
     this.moving = false;
     this.article = null;
@@ -150,23 +150,24 @@ class ShareModule extends Component {
     let overlay = this.overlay;
     shareLinks.style.display = "none";
     overlay.style.display = "none";
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
-    if (this.expandedTimeout) {
-      clearTimeout(this.expandedTimeout);
-    }
+    // if (this.timeout) {
+    //   clearTimeout(this.timeout);
+    // }
+    // if (this.expandedTimeout) {
+    //   clearTimeout(this.expandedTimeout);
+    // }
   }
+
+  microzineReady() {
+    this.setState({ isVisible: true, expanded: false });
+  }
+
   componentDidMount() {
     // @cpeterson - removed event listenrs to get demo working. @todo - fix.
-    MicrozineEvents.addEventListener("microzineready", () => {
-      this.setState({ isVisible: true, expanded: false });
-    });
+    //MicrozineEvents.addEventListener("microzineready", this.microzineReady);
   }
   componentWillUnmount() {
-    MicrozineEvents.removeEventListener("microzineready", () => {
-      this.setState({ isVisible: true, expanded: false });
-    });
+    //MicrozineEvents.removeEventListener("microzineready", this.microzineReady);
     Page.removeEventListener("resize", this.handleResize.bind(this));
   }
 
@@ -184,11 +185,11 @@ class ShareModule extends Component {
     // }
   }
   handleResize() {
-    setTimeout(() => {
-      if (this.article) {
-        this.articleHeight = this.article.offsetHeight - Page.height;
-      }
-    }, 500);
+    // setTimeout(() => {
+    //   if (this.article) {
+    //     this.articleHeight = this.article.offsetHeight - Page.height;
+    //   }
+    // }, 500);
     // handle bottom scroll:
     // setTimeout(() => {
     //   this.handleScroll({scrollTop:window.pageYOffset});
