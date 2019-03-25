@@ -113,6 +113,9 @@ class MicrozineProperties {
    * @returns {string}  - The brand short name
    */
   static get brand() {
+    if (typeof window === `undefined`) {
+      return "";
+    }
     return window.ZBI_MZCONFIG.b;
   }
 
@@ -123,6 +126,9 @@ class MicrozineProperties {
    * @returns {string} - brand name as we want it to appear, set in meta data on _mapping.yml
    */
   static get brandName() {
+    if (typeof window === `undefined`) {
+      return "";
+    }
     return window.mzMetadata.brand_name;
   }
 
@@ -132,6 +138,9 @@ class MicrozineProperties {
    * @returns {string}  - The brand short name
    */
   static get brandColor() {
+    if (typeof window === `undefined`) {
+      return "";
+    }
     return window.window.mzMetadata.brand_color;
   }
 
@@ -141,6 +150,9 @@ class MicrozineProperties {
    * @returns {string}  - path to touch icon
    */
   static get touchIcon() {
+    if (typeof window === `undefined`) {
+      return "";
+    }
     return window.window.mzMetadata.touch_icon;
   }
 
@@ -150,6 +162,9 @@ class MicrozineProperties {
    * @returns {string}  - title of the microzine
    */
   static get documentTitle() {
+    if (typeof window === `undefined`) {
+      return "";
+    }
     return window.window.mzMetadata.title;
   }
 
@@ -159,6 +174,9 @@ class MicrozineProperties {
    * @returns {string}  - The app ID (UUID)
    */
   static get appID() {
+    if (typeof window === `undefined`) {
+      return "";
+    }
     return window.ZBI_MZCONFIG.a;
   }
 
@@ -168,6 +186,9 @@ class MicrozineProperties {
    * @returns {string}  - The app short name
    */
   static get appName() {
+    if (typeof window === `undefined`) {
+      return "";
+    }
     return window.ZBI_MZCONFIG.an;
   }
 
@@ -177,6 +198,9 @@ class MicrozineProperties {
    * @returns {string}  - The app version short name
    */
   static get appVersion() {
+    if (typeof window === `undefined`) {
+      return "";
+    }
     return window.ZBI_MZCONFIG.av;
   }
 
@@ -186,6 +210,9 @@ class MicrozineProperties {
    * @returns {string}  - The entry page
    */
   static get entryPage() {
+    if (typeof window === `undefined`) {
+      return "";
+    }
     return window.ZBI_MZCONFIG.e;
   }
 
@@ -195,6 +222,7 @@ class MicrozineProperties {
    * @returns {string}  - The base path
    */
   static get basePath() {
+    //cpeterson
     return "https://cdn-prototype.microsites.partnersite.mobi";
     //return window.mzMetadata.siteURL;
   }
@@ -216,6 +244,9 @@ class MicrozineProperties {
    * @returns {string}  - The base path
    */
   static get externalContentPath() {
+    if (typeof window === `undefined`) {
+      return "";
+    }
     return `/${window.ZBI_MZCONFIG.b}/${
       window.ZBI_MZCONFIG.av
     }/external_content`;
