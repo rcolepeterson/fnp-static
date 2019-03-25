@@ -8,7 +8,10 @@ let _pageElements = new Map();
 
 class Page extends Eventifier {
   static _initialize() {
-    window.addEventListener("resize", this._handleResize.bind(this));
+    if (typeof window !== `undefined`) {
+      window.addEventListener("resize", this._handleResize.bind(this));
+    }
+
     _width = document.body.clientWidth;
     _height = Math.max(
       document.documentElement.clientHeight,

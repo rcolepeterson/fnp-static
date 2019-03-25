@@ -11,7 +11,6 @@ import SEO from "../components/seo";
 
 if (typeof window === `undefined`) {
   window = {};
-  navigator = {};
 }
 
 window.ArticleCollections = function() {};
