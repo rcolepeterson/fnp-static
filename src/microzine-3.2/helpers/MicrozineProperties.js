@@ -35,17 +35,22 @@ if (_isFIF) {
   }
 }
 
-let platform = /(iphone|ipad|ipod)/i.test(navigator.userAgent)
-  ? "iOS"
-  : /android/i.test(navigator.userAgent)
-  ? "Android"
-  : /macintosh/i.test(navigator.userAgent)
-  ? "MacOS"
-  : /windows/i.test(navigator.userAgent)
-  ? "Windows"
-  : /linux/i.test(navigator.userAgent)
-  ? "Linux"
-  : "unknown";
+//@cpeterson
+let platform = "unknown";
+
+if (typeof navigator !== `undefined`) {
+  platform = /(iphone|ipad|ipod)/i.test(navigator.userAgent)
+    ? "iOS"
+    : /android/i.test(navigator.userAgent)
+    ? "Android"
+    : /macintosh/i.test(navigator.userAgent)
+    ? "MacOS"
+    : /windows/i.test(navigator.userAgent)
+    ? "Windows"
+    : /linux/i.test(navigator.userAgent)
+    ? "Linux"
+    : "unknown";
+}
 
 // if (
 //   window.ArticleCollections &&
