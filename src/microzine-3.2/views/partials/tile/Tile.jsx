@@ -7,7 +7,7 @@ import { Link } from "gatsby";
 
 import styled from "styled-components";
 import PropTypes from "prop-types";
-const baseURL = "http://prototype.microsites.partnersite.mobi";
+const baseURL = "https://prototype.microsites.partnersite.mobi";
 
 export const Wrapper = styled(Link)`
   padding: 10px;

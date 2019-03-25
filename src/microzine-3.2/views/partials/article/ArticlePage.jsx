@@ -16,7 +16,7 @@ import RelatedArticlesContainer from "microzine-3.2/views/partials/article/Relat
 import Scroller from "microzine-3.2/api/Scroller";
 import styled from "styled-components";
 import { fonts, colors } from "microzine-3.2/styles/designSystem";
-const baseURL = "http://prototype.microsites.partnersite.mobi";
+const baseURL = "https://prototype.microsites.partnersite.mobi";
 
 class ArticlePage extends Component {
   constructor(props) {
