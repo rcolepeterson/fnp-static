@@ -14,13 +14,15 @@ class Scroller extends Eventifier {
   static _initialize() {
     console.log("we have scroller");
 
-    if (Properties.isFriendlyIframe || document === "undefined") {
+    if (Properties.isFriendlyIframe) {
       let content = Page.getElementById("content");
       content.addEventListener("scroll", Scroller._onScroll, false);
       _body = content;
     } else {
-      _body = document.body;
-      document.addEventListener("scroll", Scroller._onScroll, false);
+      if (typeof document !== `undefined`) {
+        _body = document.body;
+        document.addEventListener("scroll", Scroller._onScroll, false);
+      }
     }
   }
 
