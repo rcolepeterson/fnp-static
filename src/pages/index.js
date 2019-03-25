@@ -9,7 +9,7 @@ import Utils from "microzine-3.2/helpers/MicrozineUtils";
 // import Image from "../components/image"
 import SEO from "../components/seo";
 
-if (typeof window !== `undefined`) {
+if (typeof window === `undefined`) {
   window = {};
 }
 
