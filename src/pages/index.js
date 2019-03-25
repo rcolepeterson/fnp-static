@@ -20,6 +20,12 @@ if (typeof window !== `undefined`) {
   window.mzMetadata.brand_name = "FNP2019";
   window.ZBI_MZCONFIG = {};
   window.ZBI_MZCONFIG.brand_name = "FNP2019";
+} else {
+  window = {};
+  window.mzMetadata = {};
+  window.mzMetadata.brand_name = "FNP2019";
+  window.ZBI_MZCONFIG = {};
+  window.ZBI_MZCONFIG.brand_name = "FNP2019";
 }
 
 Properties.endCardPlacement = ["related", "promotion", "promobutton"];
