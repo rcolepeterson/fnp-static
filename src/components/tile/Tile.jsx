@@ -1,14 +1,14 @@
-import React, { Component } from 'react'; //eslint-disable-line no-unused-vars
-import TileImage from './TileImage';
-import TileTitle from './TileTitle';
-import { Link } from 'gatsby'
-import TileChannelBar from './TileChannelBar';
-import styled from 'styled-components';
-import { getDateFormatted } from '../../utils'
-import PropTypes from 'prop-types';
+import React, { Component } from "react"; //eslint-disable-line no-unused-vars
+import TileImage from "./TileImage";
+import TileTitle from "./TileTitle";
+import { Link } from "gatsby";
+import TileChannelBar from "./TileChannelBar";
+import styled from "styled-components";
+import { getDateFormatted } from "../../utils";
+import PropTypes from "prop-types";
 const getFormatedDate = (article, format) => {
   return getDateFormatted(article.article_published_at, format);
-}
+};
 
 export const Wrapper = styled.div`
   padding: 10px;
@@ -38,11 +38,11 @@ class Tile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageURL: '',
-      gifURL: '',
-      vidURL: '',
+      imageURL: "",
+      gifURL: "",
+      vidURL: "",
       loaded: false,
-      imgStyle: ''
+      imgStyle: ""
     };
     this.scaledHeight = 0;
   }
@@ -53,7 +53,10 @@ class Tile extends Component {
     );
     let dimsW = parseInt(dims[1]);
     let dimsH = parseInt(dims[2]);
-    let clientW = Math.min(document.body.clientWidth, 1024);
+    let clientW = 1024;
+    if (typeof document !== `undefined`) {
+      clientW = Math.min(document.body.clientWidth, 1024);
+    }
     // 21 = 20px for padding and 1px for border.
     let clientWidth = clientW / 2 - 21;
     let aspectRatio = dimsW / dimsH;
@@ -63,7 +66,6 @@ class Tile extends Component {
     }
     return this.scaledHeight;
   }
-
 
   /**
    * Renders the Tile instance
@@ -77,19 +79,18 @@ class Tile extends Component {
       <Wrapper
         ref={node => (this.node = node)}
         id={this.props.id}
-        className={`${this.state.loaded && 'isVisible'}`}
-        data-article_digest={this.props.article.article_digest}>
+        className={`${this.state.loaded && "isVisible"}`}
+        data-article_digest={this.props.article.article_digest}
+      >
         <Link to={`/articles/${this.props.article.article_clean_title}`}>
           {this.props.article.article_image_url && (
-            <TileImage
-              imageURL={this.props.article.article_image_url}
-            />
+            <TileImage imageURL={this.props.article.article_image_url} />
           )}
 
           <TileTitle article={this.props.article} />
           <TileChannelBar
             article={this.props.article}
-            bottomInfo={getFormatedDate(this.props.article, 'MMMM Do')}
+            bottomInfo={getFormatedDate(this.props.article, "MMMM Do")}
           />
         </Link>
       </Wrapper>
