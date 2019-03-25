@@ -7,9 +7,13 @@ import Utils from "microzine-3.2/helpers/MicrozineUtils";
 import Properties from "microzine-3.2/helpers/MicrozineProperties";
 
 let _routeHistory = [],
-  _baseUrl = document.location.href.split("#")[0],
+  _baseUrl = "",
   _routeOptions = {},
   _canNavigate = true;
+
+if (typeof document !== `undefined`) {
+  _baseUrl = document.location.href.split("#")[0];
+}
 
 /**
  * Static module that handles routing
