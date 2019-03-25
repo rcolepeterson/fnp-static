@@ -128,7 +128,7 @@ class FrontPage extends Component {
     let nodes = [];
     let heights = [];
     // use dimensions to calculate the best column for each child
-    if (elements.length && elements.length === vnodes.length) {
+    if (elements && elements.length && elements.length === vnodes.length) {
       for (let i = 0; i < 2; i++) {
         nodes[i] = [];
         heights[i] = 0;
