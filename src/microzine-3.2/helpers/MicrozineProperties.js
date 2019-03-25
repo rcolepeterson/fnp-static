@@ -522,7 +522,9 @@ class MicrozineProperties {
   static set articles(articles) {
     _articles = articles;
 
-    window.articles = articles;
+    if (typeof window !== `undefined`) {
+      window.articles = articles;
+    }
 
     _mergeStaticArticles = Articles.mergeStaticArticles({
       staticCollections: this.staticCollections,
