@@ -14,7 +14,7 @@ class Scroller extends Eventifier {
   static _initialize() {
     console.log("we have scroller");
 
-    if (Properties.isFriendlyIframe) {
+    if (Properties.isFriendlyIframe || document === "undefined") {
       let content = Page.getElementById("content");
       content.addEventListener("scroll", Scroller._onScroll, false);
       _body = content;
