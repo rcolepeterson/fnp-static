@@ -62,12 +62,15 @@ class Tile extends Component {
     );
     let dimsW = parseInt(dims[1]);
     let dimsH = parseInt(dims[2]);
-    let clientW = Math.min(document.body.clientWidth, 1024);
+    let clientW = 1024;
+    if (typeof document !== `undefined`) {
+      clientW = Math.min(document.body.clientWidth, 1024);
+    }
     // 21 = 20px for padding and 1px for border.
     let clientWidth = clientW / 2 - 21;
     let aspectRatio = dimsW / dimsH;
     let heightT = clientWidth / aspectRatio;
-    
+
     if (this.scaledHeight === 0) {
       return heightT;
     }
@@ -87,10 +90,9 @@ class Tile extends Component {
 
   shouldLoad() {
     if (!this.node) {
-      console.log('ooops');
+      console.log("ooops");
       return;
     }
-    
 
     let rect = this.node.getBoundingClientRect();
     let clientHeight =
@@ -101,7 +103,10 @@ class Tile extends Component {
       rect.top >= -buffer &&
       rect.bottom <= clientHeight + 600
     ) {
-      window.removeEventListener("mainPagescrollscrollScroll", this.handleScroll);
+      window.removeEventListener(
+        "mainPagescrollscrollScroll",
+        this.handleScroll
+      );
       this.node.classList.add("isVisible");
       this.setState({
         imageURL: baseURL + this.props.article.articleImage.url,
