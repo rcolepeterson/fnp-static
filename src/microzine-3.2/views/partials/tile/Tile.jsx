@@ -2,7 +2,7 @@ import React, { Component } from "react"; //eslint-disable-line no-unused-vars
 import TileImage from "microzine-3.2/views/partials/tile/TileImage";
 import TileTitle from "microzine-3.2/views/partials/tile/TileTitle";
 import TileChannelBar from "microzine-3.2/views/partials/tile/TileChannelBar";
-import Scroller from "microzine-3.2/api/Scroller";
+//import Scroller from "microzine-3.2/api/Scroller";
 import { Link } from "gatsby";
 
 import styled from "styled-components";

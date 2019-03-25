@@ -1,9 +1,9 @@
-import React from 'react'; //eslint-disable-line no-unused-vars
+import React from "react"; //eslint-disable-line no-unused-vars
 //import Properties from 'microzine-3.2/helpers/MicrozineProperties';
-import styled from 'styled-components';
-import { colors, typeSizes } from '../../styles/designSystem';
-import { ButtonStyle } from './Button';
-import PropTypes from 'prop-types';
+import styled from "styled-components";
+import { colors, typeSizes } from "../../styles/designSystem";
+import { ButtonStyle } from "./Button";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
   margin-top: 0;
@@ -19,9 +19,9 @@ const Wrapper = styled.div`
 const CTAButton = styled(ButtonStyle)`
   box-sizing: border-box;
   margin: 0;
-  border: 2px solid #3E606F;
-  background-color: #3E606F;
-  color:white;
+  border: 2px solid #3e606f;
+  background-color: #3e606f;
+  color: white;
   font-size: ${typeSizes[2]};
   width: 100%;
   justify-content: left;
@@ -44,9 +44,9 @@ const CTAButton = styled(ButtonStyle)`
 /**
  * Microzine call to action button
  */
-const CtaButton = ({ label = 'Explore More', arrow = true }) => (
+const CtaButton = ({ label = "Explore More", arrow = true }) => (
   <Wrapper>
-    <a target="_blank" href={'//www.zumobi.com'}>
+    <a target="_blank" rel="noopener noreferrer" shref={"//www.zumobi.com"}>
       <CTAButton className="button">
         <span>{label}</span>
         <span>

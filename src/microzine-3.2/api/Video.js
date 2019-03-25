@@ -1,10 +1,10 @@
-import Eventifier from 'microzine-3.2/base/EventifierStatic';
+import Eventifier from "microzine-3.2/base/EventifierStatic";
 //import Logger from 'microzine-3.2/helpers/Logger';
-import MicrozineEvents from 'microzine-3.2/helpers/MicrozineEvents';
-import Router from 'microzine-3.2/api/Router';
+import MicrozineEvents from "microzine-3.2/helpers/MicrozineEvents";
+import Router from "microzine-3.2/api/Router";
 //import VAPIBrightcove from 'microzine-3.2/api/videoApis/Brightcove';
-import VAPIYouTube from 'microzine-3.2/api/videoApis/YouTube';
-import Properties from 'microzine-3.2/helpers/MicrozineProperties';
+import VAPIYouTube from "microzine-3.2/api/videoApis/YouTube";
+import Properties from "microzine-3.2/helpers/MicrozineProperties";
 
 let _initialized = false,
   _isFirstVideo = true,
@@ -25,9 +25,9 @@ class Video extends Eventifier {
   static set connectedArticleController(value) {
     _articleController = value;
 
-    if ('addEventListener' in _articleController) {
+    if ("addEventListener" in _articleController) {
       _articleController.addEventListener(
-        'articlerendered',
+        "articlerendered",
         this._onArticleRendered.bind(this)
       );
     }
@@ -52,24 +52,24 @@ class Video extends Eventifier {
       widget => {
         let inlineId,
           inlineSource,
-          videoUrl = widget.getAttribute('data-url'),
-          imageUrl = widget.getAttribute('data-image-url');
+          videoUrl = widget.getAttribute("data-url"),
+          imageUrl = widget.getAttribute("data-image-url");
 
         // check for YouTube
         inlineId = videoUrl.match(
           /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
         )[1];
         if (inlineId) {
-          inlineSource = 'youtube';
+          inlineSource = "youtube";
 
-          let container = document.createElement('div');
-          container.className = 'video_inline';
-          container.setAttribute('data-video-source', inlineSource);
+          let container = document.createElement("div");
+          container.className = "video_inline";
+          container.setAttribute("data-video-source", inlineSource);
 
-          let standIn = document.createElement('div');
-          standIn.className = 'stand_in';
+          let standIn = document.createElement("div");
+          standIn.className = "stand_in";
 
-          let standInSpan = document.createElement('span');
+          let standInSpan = document.createElement("span");
           if (imageUrl) {
             standInSpan.style.backgroundImage = `url(${imageUrl}), url(${
               Properties.assetPath
@@ -78,7 +78,7 @@ class Video extends Eventifier {
           standIn.appendChild(standInSpan);
           container.appendChild(standIn);
 
-          let video = document.createElement('div');
+          let video = document.createElement("div");
           video.id = `video::${inlineId}`;
           container.appendChild(video);
 
@@ -103,16 +103,16 @@ class Video extends Eventifier {
   // change the event args from time to time, and it would be a pain to have to remember to update every single API
   static _eventDispatcher(eventName, properties) {
     switch (eventName) {
-      case 'videostarted':
-        this.dispatchEvent('videostarted', {
+      case "videostarted":
+        this.dispatchEvent("videostarted", {
           videoID: properties.videoID,
           startTime: properties.startTime,
           referringRoute: Router.currentRoute,
           playerType: properties.source
         });
         break;
-      case 'videoReportQuartile':
-        this.dispatchEvent('videoReportQuartile', {
+      case "videoReportQuartile":
+        this.dispatchEvent("videoReportQuartile", {
           videoID: properties.videoID,
           quartileValue: properties.quartileValue,
           referringRoute: properties.referringRoute
@@ -166,7 +166,7 @@ class Video extends Eventifier {
           props.maxPercent = Math.max(pct, props.maxPercent);
 
           if (props.maxPercent !== oldMaxPercent) {
-            this.dispatchEvent('videoprogressupdated', {
+            this.dispatchEvent("videoprogressupdated", {
               videoID: id,
               percent: props.maxPercent
             });
@@ -212,25 +212,30 @@ class Video extends Eventifier {
     };
 
     switch (source) {
-      case 'youtube':
+      case "youtube":
         properties.api = new VAPIYouTube(
           properties,
           this._eventDispatcher.bind(this)
         );
         break;
-      case 'brightcove':
+      case "brightcove":
         // properties.api = new VAPIBrightcove(
         //   properties,
         //   this._eventDispatcher.bind(this)
         // );
         break;
+      default:
+        properties.api = new VAPIYouTube(
+          properties,
+          this._eventDispatcher.bind(this)
+        );
     }
 
     _videos[properties.id] = properties;
     this._initializeVideo(properties);
 
     this._checkStartTimer();
-    this.dispatchEvent('videoregistered', {
+    this.dispatchEvent("videoregistered", {
       videoID: properties.id,
       properties: properties
     });
@@ -286,14 +291,14 @@ class Video extends Eventifier {
     this._checkPauseTimer();
 
     Object.assign(args, props);
-    this.dispatchEvent('videounregistered', args);
+    this.dispatchEvent("videounregistered", args);
   }
 }
 
 MicrozineEvents.addEventListener(
-  'apiInitialized',
+  "apiInitialized",
   Video._apiInitialized.bind(Video)
 );
-Router.addEventListener('routechange', Video._onContentUnloading.bind(Video));
+Router.addEventListener("routechange", Video._onContentUnloading.bind(Video));
 
 export default Video;

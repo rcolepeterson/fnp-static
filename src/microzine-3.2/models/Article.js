@@ -1,5 +1,5 @@
-import Properties from 'microzine-3.2/helpers/MicrozineProperties';
-import { dateDiff, getDateFormatted } from 'microzine-3.2/helpers/utils';
+import Properties from "microzine-3.2/helpers/MicrozineProperties";
+import { dateDiff, getDateFormatted } from "microzine-3.2/helpers/utils";
 //import Moment from 'moment';
 /**
  * Article model
@@ -29,10 +29,10 @@ class Article {
     let source = this.source;
 
     if (
-      source === 'twitter' ||
-      source === 'pinterest' ||
-      source === 'facebook' ||
-      source === 'instagram'
+      source === "twitter" ||
+      source === "pinterest" ||
+      source === "facebook" ||
+      source === "instagram"
     ) {
       return this._data.article_summary || this._data.article_content;
     } else {
@@ -49,18 +49,20 @@ class Article {
   _chooseArticleTitle() {
     let source = this.source;
     switch (source) {
-      case 'blog':
+      case "blog":
         return this._data.article_title;
-      case 'twitter':
+      case "twitter":
         return this._data.article_extras.name;
-      case 'pinterest':
+      case "pinterest":
         return this._data.article_author;
-      case 'facebook':
+      case "facebook":
         return this._data.article_author;
-      case 'instagram':
+      case "instagram":
         return this._data.article_author;
-      case 'youtube':
+      case "youtube":
         return this._data.article_extras.channel_title;
+      default:
+        return this._data.article_title;
     }
   }
 
@@ -73,24 +75,24 @@ class Article {
   _chooseTileTitle() {
     let source = this.source;
     switch (source) {
-      case 'blog':
+      case "blog":
         let collection = Properties.collections.find(source => {
-          return source.collectionType === 'blog';
+          return source.collectionType === "blog";
         });
         // if there isn't a collection related (this is a sub collection in a collection) the mapping file will use the 'title' (sibling of 'name')
         if (!collection) {
           return this._data.article_collection_title;
         }
         return collection.title || collection.name || collection.collection;
-      case 'twitter':
+      case "twitter":
         return this._data.article_extras.name;
-      case 'pinterest':
+      case "pinterest":
         return this._data.article_author;
-      case 'facebook':
+      case "facebook":
         return this._data.article_author;
-      case 'instagram':
+      case "instagram":
         return this._data.article_author;
-      case 'youtube':
+      case "youtube":
         return this._data.article_extras.channel_title;
       default:
         return this._data.article_collection_title;
@@ -105,10 +107,10 @@ class Article {
    */
   _chooseArticleSubTitle() {
     let source = this.source;
-    if (source === 'youtube') {
+    if (source === "youtube") {
       return this._data.article_title;
     } else {
-      return '';
+      return "";
     }
   }
 
@@ -122,27 +124,29 @@ class Article {
     let source = this.source;
 
     switch (source) {
-      case 'blog':
+      case "blog":
         return Properties.getCollectionData(source).title;
-      case 'twitter':
-        return '';
-      case 'pinterest':
-        return '';
-      case 'facebook':
+      case "twitter":
+        return "";
+      case "pinterest":
+        return "";
+      case "facebook":
         return (
           parseInt(this._data.article_extras.likes_count).toLocaleString() +
-          ' Likes'
+          " Likes"
         );
-      case 'instagram':
+      case "instagram":
         return (
           parseInt(this._data.article_extras.likes_count).toLocaleString() +
-          ' Likes'
+          " Likes"
         );
-      case 'youtube':
+      case "youtube":
         return (
           parseInt(this._data.article_extras.view_count).toLocaleString() +
-          ' Views'
+          " Views"
         );
+      default:
+        return Properties.getCollectionData(source).title;
     }
   }
 
@@ -156,26 +160,31 @@ class Article {
     let source = this.source;
 
     switch (source) {
-      case 'blog':
+      case "blog":
         return getDateFormatted(
           this._data.article_published_at,
-          'MMMM D, YYYY'
+          "MMMM D, YYYY"
         );
       //return Moment(this._data.article_published_at).utc().format('MMMM D, YYYY');
-      case 'twitter':
-        return '';
-      case 'pinterest':
-        return '';
-      case 'facebook':
+      case "twitter":
+        return "";
+      case "pinterest":
+        return "";
+      case "facebook":
         return (
           parseInt(this._data.article_extras.shares_count).toLocaleString() +
-          ' Shares'
+          " Shares"
         );
-      case 'instagram':
+      case "instagram":
         return dateDiff(this._data.article_published_at);
       //return Moment(this._data.article_published_at).utc().fromNow();
-      case 'youtube':
+      case "youtube":
         return Properties.getCollectionData(source).title;
+      default:
+        return getDateFormatted(
+          this._data.article_published_at,
+          "MMMM D, YYYY"
+        );
     }
   }
 
@@ -188,16 +197,16 @@ class Article {
   _chooseIcon() {
     let source = this.source;
     if (
-      source === 'twitter' ||
-      source === 'facebook' ||
-      source === 'youtube' ||
-      source === 'instagram'
+      source === "twitter" ||
+      source === "facebook" ||
+      source === "youtube" ||
+      source === "instagram"
     ) {
-      return this.source + '.svg';
-    } else if (source === 're' || source === 'ap' || source === 'pinterest') {
+      return this.source + ".svg";
+    } else if (source === "re" || source === "ap" || source === "pinterest") {
       return `${source}_icon.png`;
     } else {
-      return 'rss.svg';
+      return "rss.svg";
     }
   }
 
@@ -295,11 +304,11 @@ class Article {
    */
   get defaultTileImage() {
     return {
-      contentType: 'image/png',
-      dimensions: '0x0',
-      name: '1x1transparent.png',
+      contentType: "image/png",
+      dimensions: "0x0",
+      name: "1x1transparent.png",
       url:
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=',
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
       isDefault: true
     };
   }
@@ -312,29 +321,29 @@ class Article {
   get source() {
     let str = this.collectionName.toLowerCase();
 
-    if (str.indexOf('blog') !== -1) {
-      return 'blog';
+    if (str.indexOf("blog") !== -1) {
+      return "blog";
     }
-    if (str.indexOf('twitter') !== -1) {
-      return 'twitter';
+    if (str.indexOf("twitter") !== -1) {
+      return "twitter";
     }
-    if (str.indexOf('pinterest') !== -1) {
-      return 'pinterest';
+    if (str.indexOf("pinterest") !== -1) {
+      return "pinterest";
     }
-    if (str.indexOf('facebook') !== -1) {
-      return 'facebook';
+    if (str.indexOf("facebook") !== -1) {
+      return "facebook";
     }
-    if (str.indexOf('instagram') !== -1) {
-      return 'instagram';
+    if (str.indexOf("instagram") !== -1) {
+      return "instagram";
     }
-    if (str.indexOf('youtube') !== -1) {
-      return 'youtube';
+    if (str.indexOf("youtube") !== -1) {
+      return "youtube";
     }
-    if (str.indexOf('ap-') !== -1) {
-      return 'ap';
+    if (str.indexOf("ap-") !== -1) {
+      return "ap";
     }
-    if (str.indexOf('re-') !== -1) {
-      return 're';
+    if (str.indexOf("re-") !== -1) {
+      return "re";
     }
 
     return str;
@@ -359,7 +368,7 @@ class Article {
    * @returns {string}  - The article video url
    */
   get videoUrl() {
-    return this._data.article_video_url || '';
+    return this._data.article_video_url || "";
   }
 
   /**
@@ -431,7 +440,7 @@ class Article {
    * @returns {{contentType: string, dimensions: string, name: string, url: string}}  - Normalized tile image data
    */
   get gifPreview() {
-    return this._chooseHippoGIFPreview('gif');
+    return this._chooseHippoGIFPreview("gif");
   }
 
   /**
@@ -440,7 +449,7 @@ class Article {
    * @returns {{contentType: string, dimensions: string, name: string, url: string}}  - Normalized tile image data
    */
   get mp4Preview() {
-    return this._chooseHippoGIFPreview('mp4');
+    return this._chooseHippoGIFPreview("mp4");
   }
 
   /**
@@ -486,9 +495,9 @@ class Article {
    */
   get isVideo() {
     return (
-      this.source === 'youtube' ||
-      this.source === 'brightcove' ||
-      this.source === 'videojs'
+      this.source === "youtube" ||
+      this.source === "brightcove" ||
+      this.source === "videojs"
     );
   }
 
@@ -518,7 +527,7 @@ class Article {
   get profileImage() {
     return (
       this._data.article_extras.profile_image_url ||
-      Properties.assetPath + '/brand_icon.jpg'
+      Properties.assetPath + "/brand_icon.jpg"
     ); // TODO: FIXME: article_extras.profile_image_url might need to be updated since we're using static and dynamic paths
   }
 
@@ -528,7 +537,7 @@ class Article {
    * @returns {string} - the id from extras
    */
   get id() {
-    return this._data.article_extras.id || '';
+    return this._data.article_extras.id || "";
   }
 
   /**
@@ -537,11 +546,11 @@ class Article {
    * @returns {string} - the article digest (MD5 hash)
    */
   get digest() {
-    return this._data.article_digest || '';
+    return this._data.article_digest || "";
   }
 
   get extras() {
-    return this._data.article_extras || '';
+    return this._data.article_extras || "";
   }
 
   getFormatedDate(format) {
@@ -550,7 +559,7 @@ class Article {
 
   get dateFromNow() {
     //eturn Moment(this._data.article_published_at).utc().fromNow();
-    dateDiff(this._data.article_published_at);
+    return dateDiff(this._data.article_published_at);
   }
 
   getTileHeight() {

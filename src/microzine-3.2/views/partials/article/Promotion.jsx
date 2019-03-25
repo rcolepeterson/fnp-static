@@ -1,8 +1,8 @@
-import React, { Component } from 'react'; //eslint-disable-line no-unused-vars
-import Properties from 'microzine-3.2/helpers/MicrozineProperties';
-import PromoButton from 'microzine-3.2/views/partials/buttons/PromoButton';
-import styled from 'styled-components';
-import { fonts, typeSizes, colors } from 'microzine-3.2/styles/designSystem';
+import React, { Component } from "react"; //eslint-disable-line no-unused-vars
+import Properties from "microzine-3.2/helpers/MicrozineProperties";
+import PromoButton from "microzine-3.2/views/partials/buttons/PromoButton";
+import styled from "styled-components";
+import { fonts, typeSizes, colors } from "microzine-3.2/styles/designSystem";
 
 const Wrapper = styled.div`
   border-top: 2px solid ${colors.background};
@@ -44,13 +44,17 @@ class Promotion extends Component {
   render() {
     let promotionBg = {
       backgroundImage: `url(${Properties.assetPath}/promo.jpg)`,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover'
+      backgroundPosition: "center",
+      backgroundSize: "cover"
     };
     return (
       <Wrapper>
         <CardTitle>Promotion</CardTitle>
-        <a target="_blank" href={Properties.registeredUrls.promoCardUrl}>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={Properties.registeredUrls.promoCardUrl}
+        >
           <Image className="promotion_image" style={promotionBg} />
           <PromoContent>
             <span>

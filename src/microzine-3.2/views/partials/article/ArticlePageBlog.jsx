@@ -2,10 +2,6 @@ import React, { Component } from "react"; //eslint-disable-line no-unused-vars
 import ArticlePage from "microzine-3.2/views/partials/article/ArticlePage";
 
 class ArticlePageBlog extends ArticlePage {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillUpdate(props, nextState) {
     if (nextState.userExpanded && !nextState.expanded) {
       this.hero.classList.remove("prevent_transition");

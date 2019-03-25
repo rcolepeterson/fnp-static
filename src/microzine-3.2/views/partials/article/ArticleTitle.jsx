@@ -1,17 +1,17 @@
-import React, { Component } from 'react'; //eslint-disable-line no-unused-vars
-import Properties from 'microzine-3.2/helpers/MicrozineProperties';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { fonts } from 'microzine-3.2/styles/designSystem';
+import React, { Component } from "react"; //eslint-disable-line no-unused-vars
+import Properties from "microzine-3.2/helpers/MicrozineProperties";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { fonts } from "microzine-3.2/styles/designSystem";
 
 const ArticleTitle = props => {
-  let noBrandIcon = '';
-  let socialIcon = '';
+  let noBrandIcon = "";
+  let socialIcon = "";
   props.icon
-    ? (socialIcon = <img src={props.icon} />)
-    : (noBrandIcon = 'no_brand_icon');
+    ? (socialIcon = <img src={props.icon} alt="" />)
+    : (noBrandIcon = "no_brand_icon");
   return (
-    <Wrapper className={props.source + ' ' + noBrandIcon}>
+    <Wrapper className={props.source + " " + noBrandIcon}>
       {socialIcon}
       <div>
         <span>{Properties.brandName}</span>
@@ -19,7 +19,7 @@ const ArticleTitle = props => {
       </div>
       {props.collectionIcon && (
         <SourceIcon
-          style={{ backgroundImage: 'url(' + props.collectionIcon + ')' }}
+          style={{ backgroundImage: "url(" + props.collectionIcon + ")" }}
         />
       )}
       {props.title && <SubTitle>{props.title}</SubTitle>}

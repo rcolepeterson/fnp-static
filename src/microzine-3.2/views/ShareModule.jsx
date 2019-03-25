@@ -1,6 +1,6 @@
 import React, { Component } from "react"; //eslint-disable-line no-unused-vars
 //import Router from "microzine-3.2/api/Router";
-import MicrozineEvents from "microzine-3.2/helpers/MicrozineEvents";
+//import MicrozineEvents from "microzine-3.2/helpers/MicrozineEvents";
 import Properties from "microzine-3.2/helpers/MicrozineProperties";
 import Page from "microzine-3.2/api/Page";
 //import Logger from "microzine-3.2/helpers/Logger";
@@ -330,8 +330,9 @@ handleScroll({scrollTop}){
             >
               Copy Link
             </div>
-            <a
+            <button
               target="_blank"
+              rel="noopener noreferrer"
               data-sharing-api="facebook"
               id="facebook_btn"
               style={{
@@ -339,8 +340,8 @@ handleScroll({scrollTop}){
               }}
             >
               Share
-            </a>
-            <a
+            </button>
+            <div
               target="_blank"
               data-sharing-api="twitter"
               id="twitter_btn"
@@ -349,8 +350,8 @@ handleScroll({scrollTop}){
               }}
             >
               Tweet
-            </a>
-            <a
+            </div>
+            <button
               id="mail_btn"
               data-sharing-api="mailto"
               style={{
@@ -358,7 +359,7 @@ handleScroll({scrollTop}){
               }}
             >
               Email
-            </a>
+            </button>
             <div className="triangle" />
           </ShareLinks>
         </ShareButton>

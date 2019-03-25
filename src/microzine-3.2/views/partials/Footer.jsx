@@ -1,7 +1,7 @@
-import React, { Component } from 'react'; //eslint-disable-line no-unused-vars
-import Properties from 'microzine-3.2/helpers/MicrozineProperties';
-import styled from 'styled-components';
-import { fonts } from 'microzine-3.2/styles/designSystem';
+import React, { Component } from "react"; //eslint-disable-line no-unused-vars
+import Properties from "microzine-3.2/helpers/MicrozineProperties";
+import styled from "styled-components";
+import { fonts } from "microzine-3.2/styles/designSystem";
 
 const FooterWrapper = styled.div`
   width: 100%;
@@ -49,7 +49,7 @@ const FooterWrapper = styled.div`
     left: 0;
     right: 0;
   }
-  html[data-mode='interstitial'] #article_wrapper & {
+  html[data-mode="interstitial"] #article_wrapper & {
     margin-bottom: 40px;
   }
 `;
@@ -60,7 +60,7 @@ const FooterWrapper = styled.div`
  * @extends {Component}
  */
 const Footer = () => (
-  <a href="https://www.zumobi.com/" target="_blank">
+  <a href="https://www.zumobi.com/" target="_blank" rel="noopener noreferrer">
     <FooterWrapper>
       <div>
         <span

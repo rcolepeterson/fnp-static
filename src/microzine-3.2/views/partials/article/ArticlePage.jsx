@@ -48,13 +48,13 @@ class ArticlePage extends Component {
       maxHeight: Page.height * 0.65,
       userExpanded: false
     });
-    console.log(
-      Utils.getDimensions(
-        this.props.article.articleImage.dimensions,
-        Math.min(Page.width - 20, 700 - 20)
-      ).scaledHeight
-    );
-    this.state.maxHeight = Page.height * 0.65;
+    // console.log(
+    //   Utils.getDimensions(
+    //     this.props.article.articleImage.dimensions,
+    //     Math.min(Page.width - 20, 700 - 20)
+    //   ).scaledHeight
+    // );
+    //this.state.maxHeight = Page.height * 0.65;
     this.contentWrapper = "";
     this.articleImage = "";
 

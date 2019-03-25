@@ -48,7 +48,11 @@ const CTAButton = styled(ButtonStyle)`
  */
 const CtaButton = ({ label = Properties.ctaButtonLabel, arrow = true }) => (
   <Wrapper>
-    <a target="_blank" href={Properties.registeredUrls.ctaUrl}>
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      href={Properties.registeredUrls.ctaUrl}
+    >
       <CTAButton className="button">
         <span>{label}</span>
         <span>

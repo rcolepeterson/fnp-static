@@ -100,6 +100,7 @@ class ArticleImage extends Component {
       image = (
         <img
           src={this.state.image}
+          alt=""
           style={this.state.heroImageStyle}
           onError={this.onImageError}
           onClick={this.props.handleImageExpand}
