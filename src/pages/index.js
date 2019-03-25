@@ -9,16 +9,19 @@ import Utils from "microzine-3.2/helpers/MicrozineUtils";
 // import Image from "../components/image"
 import SEO from "../components/seo";
 
-window.ArticleCollections = function() {};
-Object.assign(window.ArticleCollections, {
-  getCollections: function() {
-    return [{ name: "blog", url: "fuels-petrol-2019/1blog.json", title: "" }];
-  }
-});
-window.mzMetadata = {};
-window.mzMetadata.brand_name = "FNP2019";
-window.ZBI_MZCONFIG = {};
-window.ZBI_MZCONFIG.brand_name = "FNP2019";
+if (typeof window !== `undefined`) {
+  window.ArticleCollections = function() {};
+  Object.assign(window.ArticleCollections, {
+    getCollections: function() {
+      return [{ name: "blog", url: "fuels-petrol-2019/1blog.json", title: "" }];
+    }
+  });
+  window.mzMetadata = {};
+  window.mzMetadata.brand_name = "FNP2019";
+  window.ZBI_MZCONFIG = {};
+  window.ZBI_MZCONFIG.brand_name = "FNP2019";
+}
+
 Properties.endCardPlacement = ["related", "promotion", "promobutton"];
 const ZUMOBI = "//zumobi.com";
 Properties.registeredUrls = {
