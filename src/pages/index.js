@@ -10,7 +10,7 @@ import Utils from "microzine-3.2/helpers/MicrozineUtils";
 import SEO from "../components/seo";
 
 if (typeof window === `undefined`) {
-  window = {};
+  var window = {};
 }
 
 window.ArticleCollections = function() {};
