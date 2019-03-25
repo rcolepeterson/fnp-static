@@ -160,53 +160,28 @@ class ShareModule extends Component {
   componentDidMount() {
     // @cpeterson - removed event listenrs to get demo working. @todo - fix.
     MicrozineEvents.addEventListener("microzineready", () => {
-      this.setState({ isVisible: true, expanded:false });
+      this.setState({ isVisible: true, expanded: false });
     });
-    // if (typeof document.hidden !== "undefined") {
-    //   this.visibilityState = "hidden";
-    //   document.addEventListener(
-    //     "visibilitychange",
-    //     this._handlePageVisibilityChange.bind(this)
-    //   );
-    // } else if (typeof document.mozHidden !== "undefined") {
-    //   this.visibilityState = "mozHidden";
-    //   document.addEventListener(
-    //     "mozvisibilitychange",
-    //     this._handlePageVisibilityChange.bind(this)
-    //   );
-    // } else if (typeof document.msHidden !== "undefined") {
-    //   this.visibilityState = "msHidden";
-    //   document.addEventListener(
-    //     "msvisibilitychange",
-    //     this._handlePageVisibilityChange.bind(this)
-    //   );
-    // } else if (typeof document.webkitHidden !== "undefined") {
-    //   this.visibilityState = "webkitHidden";
-    //   document.addEventListener(
-    //     "webkitvisibilitychange",
-    //     this._handlePageVisibilityChange.bind(this)
-    //   );
-    // }
-    // Router.addEventListener("routechange", this.handleRouteChange.bind(this));
   }
   componentWillUnmount() {
-     MicrozineEvents.removeEventListener("microzineready", () => {
-      this.setState({ isVisible: true, expanded:false });
+    MicrozineEvents.removeEventListener("microzineready", () => {
+      this.setState({ isVisible: true, expanded: false });
     });
     Page.removeEventListener("resize", this.handleResize.bind(this));
   }
-  
+
   handleRouteChange({ article }) {
     //close if route change happens
-    if (this.state.expanded) {
-      this.handleToggleClick();
-    }
-    if (article) {
-      this.article = document.querySelector(".article");
-    } else {
-      this.article = null;
-      this.articleHeight = 0;
-    }
+    // @cepeterson
+    // if (this.state.expanded) {
+    //   this.handleToggleClick();
+    // }
+    // if (article) {
+    //   this.article = document.querySelector(".article");
+    // } else {
+    //   this.article = null;
+    //   this.articleHeight = 0;
+    // }
   }
   handleResize() {
     setTimeout(() => {
@@ -290,38 +265,38 @@ handleScroll({scrollTop}){
    * @returns {void}
    */
   copyToClipboard() {
-    let baseUrl = Properties.isFriendlyIframe
-      ? `${document.getElementsByTagName("base")[0].href}${Properties.brand}/${
-          Properties.entryPage
-        }.html`
-      : Router.baseUrl;
-    let URL = !Router.currentRoute
-      ? `${baseUrl}`
-      : `${baseUrl}#${Router.currentRoute.route.join("/")}`;
-
-    if (window.clipboardData && window.clipboardData.setData) {
-      // IE specific code path to prevent textarea being shown while dialog is visible.
-      return window.clipboardData.setData("Text", URL);
-    } else if (
-      document.queryCommandSupported &&
-      document.queryCommandSupported("copy")
-    ) {
-      let textarea = document.createElement("textarea");
-      textarea.textContent = URL;
-      textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in MS Edge.
-      document.body.appendChild(textarea);
-      textarea.select();
-      try {
-        return document.execCommand("copy"); // Security exception may be thrown by some browsers.
-      } catch (ex) {
-        Logger.warn("Copy to clipboard failed.", ex);
-        return false;
-      } finally {
-        document.body.removeChild(textarea);
-      }
-    } else {
-      Logger.warn("Copy to clipboard failed.");
-    }
+    //@cpeterson
+    // let baseUrl = Properties.isFriendlyIframe
+    //   ? `${document.getElementsByTagName("base")[0].href}${Properties.brand}/${
+    //       Properties.entryPage
+    //     }.html`
+    //   : Router.baseUrl;
+    // let URL = !Router.currentRoute
+    //   ? `${baseUrl}`
+    //   : `${baseUrl}#${Router.currentRoute.route.join("/")}`;
+    // if (window.clipboardData && window.clipboardData.setData) {
+    //   // IE specific code path to prevent textarea being shown while dialog is visible.
+    //   return window.clipboardData.setData("Text", URL);
+    // } else if (
+    //   document.queryCommandSupported &&
+    //   document.queryCommandSupported("copy")
+    // ) {
+    //   let textarea = document.createElement("textarea");
+    //   textarea.textContent = URL;
+    //   textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in MS Edge.
+    //   document.body.appendChild(textarea);
+    //   textarea.select();
+    //   try {
+    //     return document.execCommand("copy"); // Security exception may be thrown by some browsers.
+    //   } catch (ex) {
+    //     Logger.warn("Copy to clipboard failed.", ex);
+    //     return false;
+    //   } finally {
+    //     document.body.removeChild(textarea);
+    //   }
+    // } else {
+    //   Logger.warn("Copy to clipboard failed.");
+    // }
   }
   render() {
     let isVisible = this.state.isVisible ? "show" : "";
