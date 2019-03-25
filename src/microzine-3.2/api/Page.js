@@ -11,31 +11,33 @@ class Page extends Eventifier {
     if (typeof window !== `undefined`) {
       window.addEventListener("resize", this._handleResize.bind(this));
     }
+    if (typeof document !== `undefined`) {
+      _width = document.body.clientWidth;
+      _height = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0
+      );
 
-    _width = document.body.clientWidth;
-    _height = Math.max(
-      document.documentElement.clientHeight,
-      window.innerHeight || 0
-    );
-
-    _pageElements.set("wrapper", document.getElementById("wrapper"));
-    _pageElements.set(
-      "article_wrapper",
-      document.getElementById("article_wrapper")
-    );
-    _pageElements.set(
-      "article_close_wrapper",
-      document.getElementById("article_close_wrapper")
-    );
-    _pageElements.set(
-      "article_share",
-      document.getElementById("article_share")
-    );
-    _pageElements.set("top_ctas", document.getElementById("top_ctas"));
-    _pageElements.set("header", document.getElementById("header"));
-    _pageElements.set("brand_header"), document.getElementById("brand_header");
-    _pageElements.set("content", document.getElementById("content"));
-    _pageElements.set("back_to_top", document.getElementById("back_to_top"));
+      _pageElements.set("wrapper", document.getElementById("wrapper"));
+      _pageElements.set(
+        "article_wrapper",
+        document.getElementById("article_wrapper")
+      );
+      _pageElements.set(
+        "article_close_wrapper",
+        document.getElementById("article_close_wrapper")
+      );
+      _pageElements.set(
+        "article_share",
+        document.getElementById("article_share")
+      );
+      _pageElements.set("top_ctas", document.getElementById("top_ctas"));
+      _pageElements.set("header", document.getElementById("header"));
+      _pageElements.set("brand_header"),
+        document.getElementById("brand_header");
+      _pageElements.set("content", document.getElementById("content"));
+      _pageElements.set("back_to_top", document.getElementById("back_to_top"));
+    }
   }
   static get height() {
     return _height;
