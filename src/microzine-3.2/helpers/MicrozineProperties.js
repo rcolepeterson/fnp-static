@@ -3,9 +3,9 @@ import Articles from "microzine-3.2/api/Articles";
 
 let _hostname = "www.w3schools.com";
 let _isFIF = _hostname === "" || _hostname.indexOf("about:blank") > -1;
-let _displaySize = document
-  .querySelector("html")
-  .getAttribute("data-displaysize");
+// let _displaySize = document
+//   .querySelector("html")
+//   .getAttribute("data-displaysize");
 let _collections = [];
 let _endCardPlacement = ["shoppable", "related", "promotion", "ctabutton"];
 let _shoppableButtonLabel = "buy now";
@@ -390,7 +390,7 @@ class MicrozineProperties {
    * @returns {string}  - Size of the creative; one of 'mrect' (for 300x250), 'skyscraper' (for 160x600), 'leaderboard' (for 728x90), or ''
    */
   static get displaySize() {
-    return _displaySize;
+    return "cpeterson removed for gatsby build";
   }
 
   /**
