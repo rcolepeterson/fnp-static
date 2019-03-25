@@ -9,6 +9,10 @@ import Utils from "microzine-3.2/helpers/MicrozineUtils";
 // import Image from "../components/image"
 import SEO from "../components/seo";
 
+if (typeof window !== `undefined`) {
+  window = {};
+}
+
 window.ArticleCollections = function() {};
 Object.assign(window.ArticleCollections, {
   getCollections: function() {
