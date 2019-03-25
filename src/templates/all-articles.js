@@ -29,6 +29,7 @@ export default ({ pageContext: { allArticles } }) => {
   MicrozineEvents.dispatchEvent("microzineready");
   var articles = allArticles.map(a => new Article(a));
   Properties.articles = articles;
+  const foo = "foo";
   return (
     <Layout>
       <SiteMetadata pathname={`articles`} />
