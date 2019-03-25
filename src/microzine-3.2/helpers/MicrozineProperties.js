@@ -126,12 +126,13 @@ class MicrozineProperties {
    * @returns {string} - brand name as we want it to appear, set in meta data on _mapping.yml
    */
   static get brandName() {
-    if (typeof window === `undefined`) {
-      window.mzMetadata = {};
-      window.mzMetadata.brand_name = "FNP2019";
-    }
+    // if (typeof window === `undefined`) {
+    //   var window = {};
+    //   window.mzMetadata = {};
+    //   window.mzMetadata.brand_name = "FNP2019";
+    // }
 
-    return window.mzMetadata.brand_name;
+    return "FNP";
   }
 
   /**
