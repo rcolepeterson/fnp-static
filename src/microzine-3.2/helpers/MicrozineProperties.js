@@ -114,7 +114,9 @@ class MicrozineProperties {
    */
   static get brand() {
     if (typeof window === `undefined`) {
-      return "";
+      window.mzMetadata = {};
+      window.mzMetadata.brand_name = "FNP2019";
+      return window.mzMetadata.brand_name;
     }
     return window.ZBI_MZCONFIG.b;
   }
